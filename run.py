@@ -30,7 +30,7 @@ if __name__ == '__main__':
             'method': 'user.getrecenttracks',
             'user': sys.argv[1],
             'limit': 10,
-            'api_key': os.environ['LAST_FM_API_KEY'],
+            'api_key': sys.argv[2],
             'format': 'json',
         }
     )
