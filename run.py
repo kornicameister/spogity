@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 import sys
-import os
 import requests as r
 import typing as t
 import json
-from datetime import datetime as dt
 
 from loguru import logger
 
@@ -45,12 +43,6 @@ def pretty_table(
     )
 
 
-def sorter(track: t.Mapping[str, t.Any]) -> int:
-    if track.get('@attr', {}).get('nowplaying', False):
-        return 1
-    return int(track.get('date', {}).get('uts', 0))
-
-
 if __name__ == '__main__':
     resp = r.get(
         'https://ws.audioscrobbler.com/2.0/',
@@ -65,12 +57,8 @@ if __name__ == '__main__':
     assert resp.ok
 
     tracks = [
-        to_track(idx, track) for idx, track in enumerate(
-            sorted(
-                resp.json()['recenttracks'].get('track', [])[:10],
-                key=sorter,
-            )
-        )
+        to_track(idx, track) for idx, track in
+        enumerate(resp.json()['recenttracks'].get('track', [])[:10])
     ]
     logger.info(
         'Succesfully mapped all tracks={t}',
