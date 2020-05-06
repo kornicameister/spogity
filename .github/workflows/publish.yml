@@ -2,8 +2,6 @@
 name: gisty
 
 "on":
-  push:
-    branches: ["master"]
   schedule:
     - cron: "*/5 * * * *"
 
