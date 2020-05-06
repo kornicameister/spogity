@@ -2,16 +2,21 @@
 name: gisty
 
 "on":
+  push:
+    branches: ["master"]
   schedule:
     - cron: "*/5 * * * *"
-      
+
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
-    - run: |
-        pip install -r requirements.txt
-    - run: |
-        ./run.py kornicameister ${{ secrets.MIGHTY_TOKEN }}
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - run: |
+          pip install -r requirements.txt
+      - run: |
+          ./run.py kornicameister \
+            ${{ secrets.MIGHTY_TOKEN }} \
+            ${{ secrets.GIST_ID }} \
+            ${{ secrets.GIST_TOKEN }}

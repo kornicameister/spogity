@@ -1,2 +1,4 @@
 pip==20.1
 requests==2.23.0
+loguru==0.4.1
+tabulate==0.8.7
