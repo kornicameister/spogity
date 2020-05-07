@@ -5,6 +5,5 @@
 
 # Powered by
 
-* [kornicameister/spogity](https://github.com/kornicameister/spogity)
-* [GH Actions](https://github.com/features/actions)
+* [GH Actions](https://github.com/kornicameister/spogity/actions?query=event%3Aschedule)
 * [LastFM](https://www.last.fm/user/kornicameister/library)
