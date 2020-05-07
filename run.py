@@ -75,6 +75,15 @@ if __name__ == '__main__':
                 'content': pretty_table(tracks, 'simple'),
                 'filename': '10_recent.txt',
             },
+            'powered_by.md': {
+                'content': '\n'.join([
+                    '# Powered by',
+                    '* [kornicameister/spogity](https://github.com/kornicameister/spogity)',
+                    '* [GH Actions](https://github.com/features/actions)',
+                    '* [LastFM](https://www.last.fm/user/kornicameister/library)',
+                ]),
+                'filename': 'powered_by.md',
+            },
         },
     }
     logger.info(
