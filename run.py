@@ -49,7 +49,7 @@ if __name__ == '__main__':
         params={
             'method': 'user.getrecenttracks',
             'user': str(sys.argv[1]),
-            'limit': '10',
+            'limit': '50',
             'api_key': str(sys.argv[2]),
             'format': 'json',
         }
@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
     tracks = [
         to_track(idx, track) for idx, track in
-        enumerate(resp.json()['recenttracks'].get('track', [])[:10])
+        enumerate(resp.json()['recenttracks'].get('track', []))
     ]
     logger.info(
         'Succesfully mapped all tracks={t}',
@@ -68,12 +68,20 @@ if __name__ == '__main__':
     patch_body = {
         'description': (
             f'{sys.argv[1]} :: '
-            f'{"listens now" if any(map(lambda t: t.now_playing, tracks)) else "paused"}'
+            f'{"listens now" if any(map(lambda t: t.now_playing, tracks[:5])) else "paused"}'
         ),
         'files': {
             '10_recent.txt': {
-                'content': pretty_table(tracks, 'simple'),
+                'content': pretty_table(tracks[:10], 'simple'),
                 'filename': '10_recent.txt',
+            },
+            '50_recent.txt': {
+                'content': pretty_table(tracks[:50], 'simple'),
+                'filename': '50_recent.txt',
+            },
+            '100_recent.txt': {
+                'content': pretty_table(tracks[:100], 'simple'),
+                'filename': '50_recent.txt',
             },
             'powered_by.md': {
                 'content': '\n'.join([
