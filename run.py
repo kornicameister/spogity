@@ -81,7 +81,7 @@ if __name__ == '__main__':
             },
             '100_recent.txt': {
                 'content': pretty_table(tracks[:100], 'simple'),
-                'filename': '50_recent.txt',
+                'filename': '100_recent.txt',
             },
             'powered_by.md': {
                 'content': '\n'.join([
