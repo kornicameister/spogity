@@ -1,3 +1,4 @@
+---
 version: 2
 updates:
 - package-ecosystem: pip
@@ -6,3 +7,15 @@ updates:
     interval: daily
     time: '04:00'
   open-pull-requests-limit: 10
+  labels:
+    - dependabot
+    - pip
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: daily
+    time: '04:00'
+  open-pull-requests-limit: 10
+  labels:
+    - dependabot
+    - actions
