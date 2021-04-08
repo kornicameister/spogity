@@ -121,4 +121,4 @@ if __name__ == '__main__':
             r=json.dumps(resp.json(), indent=2),
         )
     else:
-        logger.error(resp.text())
+        logger.error(resp.text)
