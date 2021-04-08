@@ -104,6 +104,7 @@ if __name__ == '__main__':
         f'https://api.github.com/gists/{sys.argv[3]}',
         headers={
             'Authorization': f'token {sys.argv[4]}',
+            'Accept': 'application/vnd.github.v3+json',
         },
         json=patch_body,
     )
@@ -113,8 +114,11 @@ if __name__ == '__main__':
         gist_id=sys.argv[3],
         result='successfully' if resp.ok else 'without success',
     )
-
-    logger.info(
-        '{r}',
-        r=json.dumps(resp.json(), indent=2),
-    )
+    
+    if resp.ok:
+        logger.info(
+            '{r}',
+            r=json.dumps(resp.json(), indent=2),
+        )
+    else:
+        logger.error(resp.text())
