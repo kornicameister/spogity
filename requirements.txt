@@ -1,4 +1,4 @@
 pip==23.0.1
 requests==2.27.1
-loguru==0.6.0
+loguru==0.7.3
 tabulate==0.8.9
